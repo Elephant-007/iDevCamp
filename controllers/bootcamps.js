@@ -54,8 +54,20 @@ exports.createBootcamp = async (req, res, next) => {
 // @dsc     Update bootcamp
 // @route   PUT /api/v1/bootcamps/:id
 // @access  Private
-exports.updateBootcamp = (req, res, next) => {
-  res.status(200).json({ success: true, msg: 'Created new bootcamp' });
+exports.updateBootcamp = async (req, res, next) => {
+  const bootcamp = await Bootcamp.findByIdAndUpdate(req.params.id, req.body, {
+    new: true,
+    runValidators: true,
+  });
+
+  if (!bootcamp) {
+    return res.status(400).json({ success: false });
+  }
+
+  res.status(200).json({
+    success: true,
+    data: bootcamp,
+  });
 };
 
 // @dsc     Delete bootcamp
