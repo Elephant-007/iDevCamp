@@ -7,7 +7,7 @@ const dotenv = require('dotenv');
 dotenv.config({ path: './config/config.env' });
 
 // Load Models
-const Bootcamp = require('./models/Bootcamp.js');
+const Bootcamp = require('./models/Bootcamp');
 const Course = require('./models/Course');
 
 // Connect to DB
@@ -35,8 +35,9 @@ const importData = async () => {
 
     console.log('Data Imported...'.green.inverse);
     process.exit();
-  } catch (error) {}
-  console.error(error);
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 // Delete data
