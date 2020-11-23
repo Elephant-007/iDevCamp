@@ -12,7 +12,13 @@ exports.getCourses = asyncHandler(async (req, res, next) => {
   if (req.params.bootcampId) {
     query = Course.find({ bootcamp: req.params.bootcampId });
   } else {
-    query = Course.find();
+    // query = Course.find().populate('bootcamp'); --> populates the entire bootcamp info in under the coures API
+
+    // populate only name, description, website and telephone fields related to a bootcamp under courses API
+    query = Course.find().populate({
+      path: 'bootcamp',
+      select: 'name description website phone',
+    });
   }
 
   const courses = await query;
