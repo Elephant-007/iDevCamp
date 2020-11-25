@@ -3,7 +3,7 @@ const asyncHandler = require('../middleware/async');
 const geocoder = require('../utils/geocoder');
 const Bootcamp = require('../models/Bootcamp');
 
-// @dsc     Get all bootcamps
+// @desc     Get all bootcamps
 // @route   GET /api/v1/bootcamps
 // @access  Public
 exports.getBootcamps = asyncHandler(async (req, res, next) => {
@@ -91,7 +91,7 @@ exports.getBootcamps = asyncHandler(async (req, res, next) => {
   });
 });
 
-// @dsc     Get single bootcamp
+// @desc     Get single bootcamp
 // @route   GET /api/v1/bootcamps/:id
 // @access  Public
 exports.getBootcamp = asyncHandler(async (req, res, next) => {
@@ -109,7 +109,7 @@ exports.getBootcamp = asyncHandler(async (req, res, next) => {
   });
 });
 
-// @dsc     Create new bootcamp
+// @desc     Create new bootcamp
 // @route   POST /api/v1/bootcamps
 // @access  Private
 exports.createBootcamp = asyncHandler(async (req, res, next) => {
@@ -121,7 +121,7 @@ exports.createBootcamp = asyncHandler(async (req, res, next) => {
   });
 });
 
-// @dsc     Update bootcamp
+// @desc     Update bootcamp
 // @route   PUT /api/v1/bootcamps/:id
 // @access  Private
 exports.updateBootcamp = asyncHandler(async (req, res, next) => {
@@ -142,7 +142,7 @@ exports.updateBootcamp = asyncHandler(async (req, res, next) => {
   });
 });
 
-// @dsc     Delete bootcamp
+// @desc     Delete bootcamp
 // @route   DELETE /api/v1/bootcamps/:id
 // @access  Private
 exports.deleteBootcamp = asyncHandler(async (req, res, next) => {
