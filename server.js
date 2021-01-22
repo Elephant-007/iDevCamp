@@ -17,7 +17,7 @@ const courses = require('./routes/courses');
 
 const app = express();
 
-// Body parser
+// Body parser (included wiht express by default)
 app.use(express.json());
 
 // Dev Logging middleware
