@@ -3,7 +3,7 @@ const asyncHandler = require('../middleware/async');
 const Course = require('../models/Course');
 const Bootcamp = require('../models/Bootcamp');
 
-// @desc     Get courses
+// @desc    Get courses
 // @route   GET /api/v1/courses
 // @route   GET /api/v1/bootcamps/:bootcampId/courses
 // @access  Public
@@ -31,7 +31,7 @@ exports.getCourses = asyncHandler(async (req, res, next) => {
   });
 });
 
-// @desc     Get single course
+// @desc    Get single course
 // @route   GET /api/v1/courses/:id
 // @access  Public
 exports.getCourse = asyncHandler(async (req, res, next) => {
@@ -53,7 +53,7 @@ exports.getCourse = asyncHandler(async (req, res, next) => {
   });
 });
 
-// @desc     Add a course
+// @desc    Add a course
 // @route   POST  /api/v1/bootcamps/:bootcampId/courses
 // @access  Private
 exports.addCourse = asyncHandler(async (req, res, next) => {
@@ -76,7 +76,7 @@ exports.addCourse = asyncHandler(async (req, res, next) => {
   });
 });
 
-// @desc     Update a course
+// @desc    Update a course
 // @route   POST  /api/v1/courses/:id
 // @access  Private
 exports.updateCourse = asyncHandler(async (req, res, next) => {
@@ -100,7 +100,7 @@ exports.updateCourse = asyncHandler(async (req, res, next) => {
   });
 });
 
-// @desc     Delete a course
+// @desc    Delete a course
 // @route   DELETE  /api/v1/courses/:id
 // @access  Private
 exports.deleteCourse = asyncHandler(async (req, res, next) => {
