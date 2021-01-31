@@ -91,7 +91,7 @@ exports.getBootcamps = asyncHandler(async (req, res, next) => {
   });
 });
 
-// @desc     Get single bootcamp
+// @desc    Get single bootcamp
 // @route   GET /api/v1/bootcamps/:id
 // @access  Public
 exports.getBootcamp = asyncHandler(async (req, res, next) => {
@@ -109,7 +109,7 @@ exports.getBootcamp = asyncHandler(async (req, res, next) => {
   });
 });
 
-// @desc     Create new bootcamp
+// @desc    Create new bootcamp
 // @route   POST /api/v1/bootcamps
 // @access  Private
 exports.createBootcamp = asyncHandler(async (req, res, next) => {
@@ -121,7 +121,7 @@ exports.createBootcamp = asyncHandler(async (req, res, next) => {
   });
 });
 
-// @desc     Update bootcamp
+// @desc    Update bootcamp
 // @route   PUT /api/v1/bootcamps/:id
 // @access  Private
 exports.updateBootcamp = asyncHandler(async (req, res, next) => {
@@ -142,7 +142,7 @@ exports.updateBootcamp = asyncHandler(async (req, res, next) => {
   });
 });
 
-// @desc     Delete bootcamp
+// @desc    Delete bootcamp
 // @route   DELETE /api/v1/bootcamps/:id
 // @access  Private
 exports.deleteBootcamp = asyncHandler(async (req, res, next) => {
@@ -174,7 +174,7 @@ exports.getBootcampsInRadius = asyncHandler(async (req, res, next) => {
   const lng = loc[0].longitude;
 
   // Calculate radius using radians
-  // Divide dist by radius of the Earth
+  // Divide distance by radius of the Earth
   // Earth radius = 3,963 mi / 6,378 km
   const radius = distance / 3963;
 
