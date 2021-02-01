@@ -50,8 +50,12 @@ node seeder -d
 node seeder -i
 ```
 
+# Copyright Info
+
+```
 - Version:
 - License: MIT
 - Author: Ratna Lama
 - Credits:
   - Brad Traversy
+```
