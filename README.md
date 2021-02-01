@@ -1,6 +1,6 @@
 # iDevCamp
 
-> Boot Camp RESTful API featuring MERN Stack
+Boot Camp RESTful API featuring MERN Stack
 
 - MongoDB
 - Express
@@ -50,10 +50,10 @@ node seeder -d
 node seeder -i
 ```
 
-# Copyright Info
+## Copyright Info
 
 ```
-- Version:
+- Version: 1.0.0
 - License: MIT
 - Author: Ratna Lama
 - Credits:
