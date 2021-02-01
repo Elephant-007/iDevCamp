@@ -7,15 +7,26 @@ const {
   deleteCourse,
 } = require('../controllers/courses');
 
-// getBootcamp,
-// createBootcamp,
-// updateBootcamp,
-// deleteBootcamp,
-// getBootcampsInRadius,
+const Course = require('../models/Course');
+const advancedResults = require('../middleware/advancedResults');
 
 const router = express.Router({ mergeParams: true });
 
-router.route('/').get(getCourses).post(addCourse);
-router.route('/:id').get(getCourse).put(updateCourse).delete(deleteCourse);
+router
+  .route('/')
+  .get(
+    advancedResults(Course, {
+    path: 'bootcamp',
+    select: 'name description website phone',
+  }), 
+  getCourses
+  )
+  .post(addCourse);
+
+router
+  .route('/:id')
+  .get(getCourse)
+  .put(updateCourse)
+  .delete(deleteCourse);
 
 module.exports = router;

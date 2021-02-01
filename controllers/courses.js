@@ -8,27 +8,18 @@ const Bootcamp = require('../models/Bootcamp');
 // @route   GET /api/v1/bootcamps/:bootcampId/courses
 // @access  Public
 exports.getCourses = asyncHandler(async (req, res, next) => {
-  let query;
-
   if (req.params.bootcampId) {
-    query = Course.find({ bootcamp: req.params.bootcampId });
-  } else {
-    // query = Course.find().populate('bootcamp'); --> populates the entire bootcamp info in under the coures API
+    const courses = await Course.find({ bootcamp: req.params.bootcampId });
 
-    // populate only name, description, website and telephone fields related to a bootcamp under courses API
-    query = Course.find().populate({
-      path: 'bootcamp',
-      select: 'name description website phone',
+    return res.status(200).json({
+      success: true,
+      count: courses.length,
+      data: courses
     });
+  } else {
+    // get all courses
+    res.status(200).json(res.advancedResults);
   }
-
-  const courses = await query;
-
-  res.status(200).json({
-    success: true,
-    count: courses.length,
-    data: courses,
-  });
 });
 
 // @desc    Get single course
