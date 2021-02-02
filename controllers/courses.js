@@ -128,6 +128,18 @@ exports.deleteCourse = asyncHandler(async (req, res, next) => {
     );
   }
 
+  // Validate the user is the Bootcamp owner and/or the course owner and or ADMIN
+  // to be able to delete the course
+  if (course.user.toString() !== req.user.id && req.user.role !== 'admin') {
+    return next(
+      new ErrorResponse(
+        `User is not authorized to delete course`,
+        401
+      )
+    );
+  }
+
+  // Remove course
   await course.remove();
 
   res.status(200).json({
