@@ -22,6 +22,9 @@ Update/Add "/config/config.env" and update the following values/settings to your
 - FILE_UPLOAD_PATH=./public/uploads
 - MAX_FILE_UPLOAD=1000000
 
+- JWT_SECRET=<YourJWTSecret>
+- JWT_EXPIRE=30d
+
 ## Install Dependencies
 
 ```
