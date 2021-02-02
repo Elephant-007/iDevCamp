@@ -11,6 +11,7 @@ Boot Camp RESTful API featuring MERN Stack
 
 Update/Add "/config/config.env" and update the following values/settings to your own:
 
+- NODE_ENV=production
 - NODE_ENV=development
 - PORT=<portInUse>
 
@@ -24,6 +25,7 @@ Update/Add "/config/config.env" and update the following values/settings to your
 
 - JWT_SECRET=<YourJWTSecret>
 - JWT_EXPIRE=30d
+- JWT_COOKIE_EXPIRE=30
 
 ## Install Dependencies
 

@@ -4,6 +4,7 @@ const dotenv = require('dotenv');
 const morgan = require('morgan');
 const color = require('colors');
 const fileupload = require('express-fileupload');
+const cookieParser = require('cookie-parser');
 const errorHandler = require('./middleware/error');
 const connectDB = require('./config/db');
 
@@ -22,6 +23,9 @@ const app = express();
 
 // Body parser (included wiht express by default)
 app.use(express.json());
+
+// Cookie parser
+app.use(cookieParser());
 
 // Dev Logging middleware
 if (process.env.NODE_ENV === 'development') {
