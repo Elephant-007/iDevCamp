@@ -92,6 +92,18 @@ exports.updateCourse = asyncHandler(async (req, res, next) => {
     );
   }
 
+  // Validate the user is the bootcamp owner therefore also the course owner 
+  // and/or admin to be able to update course
+  if (course.user.toString() !== req.user.id && req.user.role !== 'admin') {
+    return next(
+      new ErrorResponse(
+        `User is not authorized to update this course.`,
+        401
+      )
+    );
+  }
+
+  // Update Course
   course = await Course.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
     runValidators: true,
