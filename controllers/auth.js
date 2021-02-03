@@ -1,5 +1,6 @@
 const ErrorResponse = require('../utils/errorResponse');
 const asyncHandler = require('../middleware/async');
+const sendEmail = require('../models/sendEmail');
 const User = require('../models/User');
 
 // @desc    Register user
