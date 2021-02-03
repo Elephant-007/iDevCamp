@@ -27,12 +27,12 @@ Update/Add "/config/config.env" and update the following values/settings to your
 - JWT_EXPIRE=30d
 - JWT_COOKIE_EXPIRE=30
 
-- SMTP_HOST=
-- SMTP_PORT=
-- SMTP_EMAIL=
-- SMTP_PASSWORD=
-- FROM_EMAIL=
-- FROM_NAME=
+- SMTP_HOST=<hostName>
+- SMTP_PORT=<portNumber>
+- SMTP_EMAIL=<email>
+- SMTP_PASSWORD=<password>
+- FROM_EMAIL=<fromEmail>
+- FROM_NAME=<fromName>
 
 ## Install Dependencies
 
