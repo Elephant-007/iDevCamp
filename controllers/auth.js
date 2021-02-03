@@ -92,10 +92,16 @@ exports.updateDetails = asyncHandler(async(req, res, next) => {
 exports.updatePassword = asyncHandler(async(req, res, next) => {
     const user = await User.findById(req.user.id).select('+password');
 
-    // Check current password
+    // Check current password matches with the one in the Database
     if (!(await user.matchPassword(req.body.currentPassword))) {
         return next(
             new ErrorResponse(`Password is incorrect`, 401));
+    }
+
+    // Check the current password and the New Password are NOT the same
+    if (req.body.currentPassword === req.body.newPassword) {
+        return next(
+            new ErrorResponse(`Current password and the New password CAN NOT be the SAME`, 403));
     }
 
     // update password
