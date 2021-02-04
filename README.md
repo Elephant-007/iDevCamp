@@ -1,6 +1,6 @@
 # iDevCamp
 
-Boot Camp RESTful API featuring MERN Stack
+Boot Camp RESTful API featuring Javascript MERN Stack
 
 ```
 - MongoDB
