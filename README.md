@@ -2,10 +2,12 @@
 
 Boot Camp RESTful API featuring MERN Stack
 
+```
 - MongoDB
 - Express
 - React
 - Node.js
+```
 
 ## Configuration
 
