@@ -55,9 +55,19 @@ exports.updateUser = asyncHandler(async(req, res, next) => {
 // @route   DELETE /api/v1/auth/users/:id
 // @access  Private/Admin
 exports.deleteUser = asyncHandler(async(req, res, next) => {
-    // delete a user
-    await User.findByIdAndDelete(req.params.id);
+    // find a user
+    const user = await User.findById(req.params.id);
 
+    // check user exists in a database
+    if (!user) {
+        return next(
+            new ErrorResponse(`User with ID: ${req.params.id} not found in the database. Please try again.`, 404));
+    }
+
+    // remove user
+    await user.remove(); 
+
+    // send response
     res.status(200).json({
         success: true,
         data: {}
