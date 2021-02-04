@@ -33,6 +33,9 @@ const ReviewSchema = new mongoose.Schema({
   },
 });
 
+// Prevent user from submitting more than one reveiw per bootcamp
+ReviewSchema.index({ bootcamp: 1 , user: 1}, { unique: true });
+
 // Static method to get average of course tuitions
 ReviewSchema.statics.getAverageRating = async function(bootcampId) {
   // console.log('Calculating average cost...'.blue);
