@@ -11,6 +11,7 @@ Boot Camp RESTful API featuring MERN Stack
 
 Update/Add "/config/config.env" and update the following values/settings to your own:
 
+```
 - NODE_ENV=production
 - NODE_ENV=development
 - PORT=<portInUse>
@@ -33,6 +34,7 @@ Update/Add "/config/config.env" and update the following values/settings to your
 - SMTP_PASSWORD=<password>
 - FROM_EMAIL=<fromEmail>
 - FROM_NAME=<fromName>
+```
 
 ## Install Dependencies
 
