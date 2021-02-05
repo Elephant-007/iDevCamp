@@ -10,6 +10,7 @@ const helmet = require('helmet');
 const xss = require('xss-clean');
 const rateLimit = require('express-rate-limit');
 const hpp = require('hpp');
+const cors = require('cors');
 const errorHandler = require('./middleware/error');
 const connectDB = require('./config/db');
 
@@ -62,6 +63,9 @@ app.use(limiter);
 // !IMPORTANT --->Prevent Http Params Pollution (HPP) attacks<---
 // Make sure the body is parse beforehand for hpp to be effective
 app.use(hpp());
+
+// !IMPORTANT --->Enable CORS<---
+app.use(cors());
 
 // Set /public/uploads as a static folder
 app.use(express.static(path.join(__dirname, 'public')));
