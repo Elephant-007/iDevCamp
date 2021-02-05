@@ -8,6 +8,8 @@ const cookieParser = require('cookie-parser');
 const mongoSanitize = require('express-mongo-sanitize');
 const helmet = require('helmet');
 const xss = require('xss-clean');
+const rateLimit = require('express-rate-limit');
+const hpp = require('hpp');
 const errorHandler = require('./middleware/error');
 const connectDB = require('./config/db');
 
@@ -48,6 +50,18 @@ app.use(helmet());
 
 // !IMPORTANT --->Prevent XSS attacks<---
 app.use(xss());
+
+// !IMPORTANT --->Rate Limiting access to API<---
+const limiter = rateLimit({
+  windowMs: 10 * 60 * 1000, // 10 Minutes
+  max: 25 // --> 25 requests per 10 minutes
+});
+
+app.use(limiter);
+
+// !IMPORTANT --->Prevent Http Params Pollution (HPP) attacks<---
+// Make sure the body is parse beforehand for hpp to be effective
+app.use(hpp());
 
 // Set /public/uploads as a static folder
 app.use(express.static(path.join(__dirname, 'public')));
