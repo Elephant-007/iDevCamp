@@ -6,6 +6,7 @@ const color = require('colors');
 const fileupload = require('express-fileupload');
 const cookieParser = require('cookie-parser');
 const mongoSanitize = require('express-mongo-sanitize');
+const helmet = require('helmet');
 const errorHandler = require('./middleware/error');
 const connectDB = require('./config/db');
 
@@ -38,8 +39,11 @@ if (process.env.NODE_ENV === 'development') {
 // File Uploading
 app.use(fileupload());
 
-// !IMPORTANT ----> Sanitize data to prevent NoSQL Injection <----
+// !IMPORTANT ----> Sanitize Data to Prevent NoSQL Injection <----
 app.use(mongoSanitize());
+
+// !IMPORTANT --->Set Security Headers<---
+app.use(helmet());
 
 // Set /public/uploads as a static folder
 app.use(express.static(path.join(__dirname, 'public')));
