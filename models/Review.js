@@ -36,7 +36,7 @@ const ReviewSchema = new mongoose.Schema({
 // Prevent user from submitting more than one reveiw per bootcamp
 ReviewSchema.index({ bootcamp: 1 , user: 1}, { unique: true });
 
-// Static method to get average of course tuitions
+// Static method to get average rating and save
 ReviewSchema.statics.getAverageRating = async function(bootcampId) {
   // console.log('Calculating average cost...'.blue);
   const obj = await this.aggregate([
@@ -51,10 +51,10 @@ ReviewSchema.statics.getAverageRating = async function(bootcampId) {
     }
   ]);
 
-  // insert averageCost to the DB
+  // insert averageRating to the DB
   try {
     await this.model('Bootcamp').findByIdAndUpdate(bootcampId, {
-      averageRating: Math.ceil(obj[0].averageRating / 10) *10
+      averageRating: obj[0].averageRating
     });
   } catch (err) {
     console.error(err);
@@ -63,12 +63,12 @@ ReviewSchema.statics.getAverageRating = async function(bootcampId) {
   // console.log(obj);
 };
 
-// Call getAverageCost after save
+// Call getAverageRating after save
 ReviewSchema.post('save', function() {
   this.constructor.getAverageRating(this.bootcamp);
 });
 
-// Call getAverageCost before remove
+// Call getAverageRating before remove
 ReviewSchema.pre('remove', function() {
   this.constructor.getAverageRating(this.bootcamp);
 });
