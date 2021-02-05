@@ -33,9 +33,9 @@ exports.getCourse = asyncHandler(async (req, res, next) => {
 
   if (!course) {
     return next(
-      new ErrorResponse(`No course with the id of ${req.params.id}`),
+      new ErrorResponse(`No course with the id of ${req.params.id}`,
       404
-    );
+    ));
   }
 
   res.status(200).json({
@@ -55,9 +55,9 @@ exports.addCourse = asyncHandler(async (req, res, next) => {
 
   if (!bootcamp) {
     return next(
-      new ErrorResponse(`No bootcamp with the id of ${req.params.bootcampId}`),
+      new ErrorResponse(`No bootcamp with the Id: ${req.params.bootcampId} found`,
       404
-    );
+    ));
   }
 
   // Validate that the user is a bootcamp owner therefore also the course owner
@@ -87,9 +87,9 @@ exports.updateCourse = asyncHandler(async (req, res, next) => {
 
   if (!course) {
     return next(
-      new ErrorResponse(`No course with the id of ${req.params.id}`),
+      new ErrorResponse(`No course with the Id: ${req.params.id} found`,
       404
-    );
+    ));
   }
 
   // Validate the user is the bootcamp owner therefore also the course owner 
@@ -123,9 +123,9 @@ exports.deleteCourse = asyncHandler(async (req, res, next) => {
 
   if (!course) {
     return next(
-      new ErrorResponse(`No course with the id of ${req.params.id}`),
+      new ErrorResponse(`No course with the Id: ${req.params.id} found`,
       404
-    );
+    ));
   }
 
   // Validate the user is the Bootcamp owner and/or the course owner and or ADMIN
